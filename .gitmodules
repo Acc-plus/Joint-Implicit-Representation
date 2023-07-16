@@ -1,0 +1,3 @@
+[submodule "torchmeta"]
+	path = torchmeta
+	url = https://github.com/tristandeleu/pytorch-meta
