@@ -1,0 +1,89 @@
+seed: 42
+
+data:
+  paths: 
+    - ../dvfdata/A_Test0
+    - ../dvfdata/B_Test1
+    - ../dvfdata/C_Test2
+    - ../dvfdata/D_Test3
+    - ../dvfdata/E_Test4
+    - ../dvfdata/F_Test5
+    - ../dvfdata/G_Test6
+    - ../dvfdata/H_Test7
+    - ../dvfdata/I_Test8
+    - ../dvfdata/J_Test9
+    - ../dvfdata/K_Test10
+    - ../dvfdata/L_Test11
+    - ../dvfdata/M_Test12
+    - ../dvfdata/N_Test13
+    - ../dvfdata/O_Test14
+    - ../dvfdata/P_Test15
+    - ../dvfdata/Q_Test16
+    - ../dvfdata/R_Test17
+    - ../dvfdata/S_Test18
+    - ../dvfdata/T_Test19
+    - ../dvfdata/U_Test20
+    - ../dvfdata/V_Test21
+    - ../dvfdata/W_Test22
+    - ../dvfdata/X_Test23
+    - ../dvfdata/Y_Test24
+    - ../dvfdata/Z_Test25
+    - ../dvfdata/a_Test26
+    - ../dvfdata/b_Test27
+    - ../dvfdata/c_Test28
+    - ../dvfdata/d_Test29
+    - ../dvfdata/e_Test30
+    - ../dvfdata/f_Test31
+    - ../dvfdata/g_Test32
+    - ../dvfdata/h_Test33
+    - ../dvfdata/i_Test34
+    - ../dvfdata/j_Test35
+    - ../dvfdata/k_Test36
+    - ../dvfdata/l_Test37
+    - ../dvfdata/m_Test38
+    - ../dvfdata/n_Test39
+    - ../dvfdata/o_Test40
+    - ../dvfdata/p_Test41
+    - ../dvfdata/q_Test42
+    - ../dvfdata/r_Test43
+    - ../dvfdata/s_Test44
+    - ../dvfdata/t_Test45
+    - ../dvfdata/u_Test46
+    - ../dvfdata/v_Test47
+    - ../dvfdata/w_Test48
+    - ../dvfdata/x_Test49
+    - ../dvfdata/y_Test50
+    - ../dvfdata/z_Test51
+  num_instance: 1500
+
+training:
+  gpus: [6]
+  batch_size: 64
+  epochs: 1000
+  LR: 0.0001
+  weight_decay: 0.0
+  lr_decay: 0.996
+
+log_info:
+  dir_output: results
+  ckpt_load: 
+  ckpt_save: CF_52_lvlv
+  pretrained: CF_52_lvlv
+  epoch: 500
+  gif_save: ''
+  png_save: ''
+  
+model:
+  type: MultiCFEX
+  CornerField:
+    latent_dim: 192
+    glyph_dim: 192
+    hyper_hidden_layers: 4
+    hyper_hidden_features: 384
+    hidden_num: 192
+    num_hidden_layer: 4
+    activation: sine
+    L1_reg: False
+    extra_embedding: True
+    with_sdflow: True
+
