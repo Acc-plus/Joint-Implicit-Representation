@@ -9,7 +9,6 @@ import math
 import torch.nn.functional as F
 from globalconfig import *
 
-
 class MultiSDF(nn.Module):
     def __init__(self, 
     num_instances,
@@ -17,7 +16,7 @@ class MultiSDF(nn.Module):
     latent_dim=128, 
     hyper_hidden_layers=2,
     hyper_hidden_features=256,
-    hidden_layer=4,
+    hidden_layers=4,
     hidden_features=128, 
     glyph_dim=32):
         super().__init__()
@@ -33,7 +32,7 @@ class MultiSDF(nn.Module):
 
         self.sdf_net = modules.SingleBVPNet(type='relu',mode='mlp', 
                                           hidden_features=hidden_features, 
-                                          num_hidden_layers=hidden_layer, 
+                                          num_hidden_layers=hidden_layers, 
                                           in_features=2,
                                           out_features=1)
 

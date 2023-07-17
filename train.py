@@ -19,13 +19,11 @@ def setup_seed(seed):
 
 def main():
     setup_seed(configs['seed'])
-
     model_toload = configs['log_info']['ckpt_load']
     gif_tosave = configs['log_info']['ckpt_load']
     model_tosave = configs['log_info']['ckpt_save']
     num_instance = configs['data']['num_instance']
-    data_paths = configs['data']['paths']
-    data_expath = configs['data']['extra_path']
+    data_paths = configs['data']['paths'][:1]
     epoch = configs['log_info']['epoch']
     save_freq = configs['training']['save_freq']
     model_class = eval(configs['model']['type'])
@@ -35,9 +33,8 @@ def main():
     if (epoch is not None):
         ep = f' ep{epoch}'
 
-    assert not os.path.exists(os.path.join('results', model_tosave))
-    os.makedirs(os.path.join('results', model_tosave))
-
+    # assert not os.path.exists(os.path.join('results', model_tosave))
+    os.makedirs(os.path.join('results', model_tosave), exist_ok = True)
 
     fontloader = data_class(num_instance, data_paths)
     model = model_class(num_instance, len(data_paths), **configs['model']['SignedDistanceField'])
@@ -58,40 +55,33 @@ def main():
     optimizers.append(torch.optim.Adam(lr=configs['training']['LR']*(configs['training']['lr_decay']**(start_ep+1)), params=model.parameters()))
     lrschedulers.append(torch.optim.lr_scheduler.ExponentialLR(optimizers[0], configs['training']['lr_decay']))
 
-    # lrschedulers.append(torch.optim.lr_scheduler.CosineAnnealingLR(optimizers[0], T_max=25, last_epoch=-1))
-
     lendata = len(dataloader)
-
     keyword_loss = 'sdf' if (model.module.__class__ == MultiSDF or model.module.__class__ == MultiSDFSimple) else 'corner'
     suf_msg = '--training-start--'
-
+    print(suf_msg)
 
     model.train()
-    for epoch in range(start_ep+1, configs['training']['epochs']):
-        print(suf_msg)
-        pbar = tqdm(dataloader)
+    pbar = tqdm(range(start_ep+1, configs['training']['epochs']))
+    for epoch in pbar:
+        
         totloss = {}
-        for iter, inputs in enumerate(pbar):
+        for iter, inputs in enumerate(dataloader):
             inputs = {key: value.to(device) for key, value in inputs.items()}
             losses = model.forward(inputs)
             
             train_loss = 0.
             if iter == 0:
-                for key in losses.items():
+                for key in losses:
                     totloss[key] = 0.
             for key, loss in losses.items():
                 single_loss = loss.mean()
                 train_loss += single_loss
-                totloss[key] += loss
-            # if iter % 100 == 0:
-                # print(f'--epoch {epoch}--iter {iter}--loss {train_loss.item()}--')
+                totloss[key] += single_loss.item()
             pbar.set_postfix({
                 'epoch': f'{epoch}',
-                'loss': f'{losses[keyword_loss].mean().item()}'
+                'iter': f'{iter}/{lendata}',
+                'loss': f'{losses[keyword_loss].mean().item():.2f}'
             })
-            suf_msg = f'{losses.items()}'
-            # if (iter == lendata - 1):
-            #     print(losses.items())
             for opt in optimizers:
                 opt.zero_grad()
             train_loss.backward()

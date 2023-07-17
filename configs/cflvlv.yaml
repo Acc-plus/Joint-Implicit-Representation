@@ -63,6 +63,7 @@ training:
   LR: 0.0001
   weight_decay: 0.0
   lr_decay: 0.996
+  save_freq: 50
 
 log_info:
   dir_output: results
@@ -80,10 +81,12 @@ model:
     glyph_dim: 192
     hyper_hidden_layers: 4
     hyper_hidden_features: 384
-    hidden_num: 192
-    num_hidden_layer: 4
+    hidden_layers: 4
+    hidden_features: 192
     activation: sine
     L1_reg: False
     extra_embedding: True
     with_sdflow: True
 
+data:
+  type: MultiCFLoader

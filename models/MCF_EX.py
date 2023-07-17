@@ -17,8 +17,8 @@ class MultiCFEX(nn.Module):
     latent_dim=128, 
     hyper_hidden_layers=1,
     hyper_hidden_features=256,
-    hidden_num=128, 
-    num_hidden_layer=3,
+    hidden_layers=3,
+    hidden_features=128, 
     activation='sine',
     glyph_dim=32, **kwargs):
         super().__init__()
@@ -40,10 +40,10 @@ class MultiCFEX(nn.Module):
             self.register_buffer('extra_coe', torch.rand((num_instances, ))*0.4 + 0.3)
             
         self.corner_net1=modules.SingleBVPNet(type=activation,mode='mlp', 
-                                             hidden_features=hidden_num, 
+                                             hidden_features=hidden_features, 
                                              num_hidden_layers=num_hidden_layer, 
                                              in_features=2,
-                                             out_features=hidden_num)
+                                             out_features=hidden_features)
         self.hyper_corner_net1 = HyperNetwork(hyper_in_features=self.latent_dim, 
                                              hyper_hidden_layers=hyper_hidden_layers, hyper_hidden_features=hyper_hidden_features, 
                                              hypo_module=self.corner_net1)
@@ -52,9 +52,9 @@ class MultiCFEX(nn.Module):
                                              hypo_module=self.corner_net1)
 
         self.corner_net2 = modules.SingleBVPNet(type=activation,mode='mlp', 
-                                             hidden_features=hidden_num, 
+                                             hidden_features=hidden_features, 
                                              num_hidden_layers=num_hidden_layer, 
-                                             in_features=hidden_num,
+                                             in_features=hidden_features,
                                              out_features=1+self.sdflow_feature)
         self.hyper_corner_net2 = HyperNetwork(hyper_in_features=self.latent_dim, 
                                              hyper_hidden_layers=hyper_hidden_layers, hyper_hidden_features=hyper_hidden_features, 
