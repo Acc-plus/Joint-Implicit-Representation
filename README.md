@@ -7,9 +7,9 @@
 ## Installation
 
 ### Requirements
-- Python 3.8 or above
-- PyTorch 1.9.0 or above
-- Torchvision 0.10.0 or above
+- Python 3.8
+- PyTorch 1.9.0
+- Torchvision 0.10.0
   
 
 1. Clone the repository
