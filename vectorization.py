@@ -1,7 +1,4 @@
-from models.DoubleIFGAN import DoubleImplicitField
-from models.sdf import ImplicitField
 from utils.dataloader import *
-from models.icf import *
 import torch
 import torch.nn as nn
 import random
@@ -11,7 +8,6 @@ from globalconfig import *
 from datetime import *
 import cv2
 import imageio
-# from utils.combrender import Vectorize_Image
 from utils.svgvectorizer import Vectorize_Image
 import cairosvg
 from img_collect import ImgCollection
@@ -49,14 +45,12 @@ def render_group(x):
     for alpha in glyph_map.keys():
         f_img = f'renders/{alpha}/{x}.png'
         f_corner = f'renders/{alpha}c/{x}.npy'
-        # Vectorize_Image(f_img, f_corner, f'{x}.svg', 512)
         if not os.path.exists(f'./svg/{x:04d}'):
             os.makedirs(f'./svg/{x:04d}')
         strsvg = Vectorize_Image(f_img, f_corner, f'./svg/{x:04d}/{glyph_map[alpha]}.svg', 512)
         cairosvg.svg2png(bytestring=strsvg, write_to=f'./svg/{x:04d}/{glyph_map[alpha]}.png', background_color='#FFFFFF')
 
     collector = ImgCollection()
-    # x = 32
     for alpha in glyph_map.keys():
         collector.add(f'./svg/{x:04d}/{glyph_map[alpha]}.png')
         

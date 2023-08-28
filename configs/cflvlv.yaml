@@ -1,6 +1,7 @@
 seed: 42
 
 data:
+  type: MultiCFLoader
   paths: 
     - ../dvfdata/A_Test0
     - ../dvfdata/B_Test1
@@ -59,7 +60,7 @@ data:
 training:
   gpus: [6]
   batch_size: 64
-  epochs: 1000
+  epochs: 300
   LR: 0.0001
   weight_decay: 0.0
   lr_decay: 0.996
@@ -70,23 +71,18 @@ log_info:
   ckpt_load: 
   ckpt_save: CF_52_lvlv
   pretrained: CF_52_lvlv
-  epoch: 500
+  epoch: 
   gif_save: ''
   png_save: ''
   
 model:
   type: MultiCFEX
-  CornerField:
+  params:
     latent_dim: 192
     glyph_dim: 192
-    hyper_hidden_layers: 4
+    hyper_hidden_layers: 2
     hyper_hidden_features: 384
-    hidden_layers: 4
+    hidden_layers: 1
     hidden_features: 192
     activation: sine
-    L1_reg: False
-    extra_embedding: True
     with_sdflow: True
-
-data:
-  type: MultiCFLoader

@@ -22,9 +22,7 @@ class MultiCFEX(nn.Module):
     activation='sine',
     glyph_dim=32, **kwargs):
         super().__init__()
-        hyper_hidden_layers = 2
-        num_hidden_layer = 1
-
+        
         self.sdflow_feature = 1 
         self.latent_dim = latent_dim
         self.glyph_dim = glyph_dim
@@ -41,7 +39,7 @@ class MultiCFEX(nn.Module):
             
         self.corner_net1=modules.SingleBVPNet(type=activation,mode='mlp', 
                                              hidden_features=hidden_features, 
-                                             num_hidden_layers=num_hidden_layer, 
+                                             num_hidden_layers=hidden_layers, 
                                              in_features=2,
                                              out_features=hidden_features)
         self.hyper_corner_net1 = HyperNetwork(hyper_in_features=self.latent_dim, 
@@ -53,7 +51,7 @@ class MultiCFEX(nn.Module):
 
         self.corner_net2 = modules.SingleBVPNet(type=activation,mode='mlp', 
                                              hidden_features=hidden_features, 
-                                             num_hidden_layers=num_hidden_layer, 
+                                             num_hidden_layers=hidden_layers, 
                                              in_features=hidden_features,
                                              out_features=1+self.sdflow_feature)
         self.hyper_corner_net2 = HyperNetwork(hyper_in_features=self.latent_dim, 

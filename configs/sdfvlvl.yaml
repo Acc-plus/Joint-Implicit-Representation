@@ -58,7 +58,7 @@ data:
   num_instance: 1500
 
 training:
-  gpus: [6]
+  gpus: [2]
   batch_size: 64
   epochs: 200
   LR: 0.0001
@@ -77,7 +77,7 @@ log_info:
   
 model:
   type: MultiSDF
-  SignedDistanceField:
+  params:
     latent_dim: 192
     glyph_dim: 192
     hyper_hidden_layers: 4

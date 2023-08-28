@@ -1,8 +1,11 @@
 ## Joint-Implicit-Representation
 
+
 <!-- <p align="center"> 
 <img src="/imgs/JIF.png" width="800">
 </p> -->
+
+This is the official implementation of: Joint Implicit Neural Representation for High-fidelity and Compact Vector Fonts.
 
 ## Installation
 
@@ -47,8 +50,8 @@ Please cite the following paper if this work helps your research:
 
     @inproceedings{chen2023joint,
 		title={Joint Implicit Neural Representation for High-fidelity and Compact Vector Fonts},
-    	author={},
-	    booktitle={},
+    	author={Chia-Hao Chen and Ying-Tian Liu and Zhifei Zhang and Yuan-Chen Guo and Song-Hai Zhang},
+	    booktitle={IEEE International Conference on Computer Vision},
 	    year={2023}
 	}
 

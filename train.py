@@ -23,7 +23,7 @@ def main():
     gif_tosave = configs['log_info']['ckpt_load']
     model_tosave = configs['log_info']['ckpt_save']
     num_instance = configs['data']['num_instance']
-    data_paths = configs['data']['paths'][:1]
+    data_paths = configs['data']['paths']
     epoch = configs['log_info']['epoch']
     save_freq = configs['training']['save_freq']
     model_class = eval(configs['model']['type'])
@@ -33,11 +33,11 @@ def main():
     if (epoch is not None):
         ep = f' ep{epoch}'
 
-    # assert not os.path.exists(os.path.join('results', model_tosave))
+    assert not os.path.exists(os.path.join('results', model_tosave))
     os.makedirs(os.path.join('results', model_tosave), exist_ok = True)
 
     fontloader = data_class(num_instance, data_paths)
-    model = model_class(num_instance, len(data_paths), **configs['model']['SignedDistanceField'])
+    model = model_class(num_instance, len(data_paths), **configs['model']['params'])
     dataloader = DataLoader(fontloader, shuffle=True,batch_size=configs['training']['batch_size'], pin_memory=False, num_workers=16, drop_last = True, collate_fn=None, worker_init_fn=lambda worker_id: np.random.seed(12345 + worker_id))
 
     if model_toload is not None:

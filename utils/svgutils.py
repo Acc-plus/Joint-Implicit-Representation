@@ -28,20 +28,7 @@ def load_data(datatype = 'test'):
         print('finish load dataset')
         return data
 
-# with open('/mnt/data1/cjh/deepvecfont/data/vecfont_dataset/train/train_all.pkl', 'rb') as f:
-#     data = pickle.load(f)
-#     print('finish load dataset')
-
-# print(len(data))
-# exit()
-
 def len_CubicBezier(cx0, cy0, cx1, cy1, cx2, cy2, cx3, cy3):
-    # cb0 = (1-t)**3
-    # cb1 = 3*t*(1-t)**2
-    # cb2 = 3*(1-t)*t**2
-    # cb3 = t**3
-    # x = cx0*cb0 + cx1*cb1 + cx2*cb2 + cx3*cb3
-    # y = cy0*cb0 + cy1*cb1 + cy2*cb2 + cy3*cb3
     f = lambda t:np.math.sqrt(
         ((-3*(1-t)**2)*cx0 + 3*(3*t**2-4*t+1)*cx1 + 3*(2*t-3*t**2)*cx2 + (3*t**2)*cx3)**2 + 
         ((-3*(1-t)**2)*cy0 + 3*(3*t**2-4*t+1)*cy1 + 3*(2*t-3*t**2)*cy2 + (3*t**2)*cy3)**2
