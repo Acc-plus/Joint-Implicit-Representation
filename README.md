@@ -15,7 +15,7 @@ This is the official implementation of: Joint Implicit Neural Representation for
 - Torchvision 0.10.0
   
 
-1. Clone the repository
+1. Clone the repository.
 ```
 git clone https://github.com/Acc-plus/Joint-Implicit-Representation.git
 git --init --recursive
@@ -23,13 +23,19 @@ cd Joint-Implicit-Representation
 pip install -r requirements.txt
 ```
 
-2. Install [torchmeta](https://github.com/tristandeleu/pytorch-meta).
+2. Install the extension.
+```
+cd utils/extension
+python setup.py install
+```
+
+3. Install [torchmeta](https://github.com/tristandeleu/pytorch-meta).
 ```
 cd pytorch-meta
 python setup.py install
 ```
 
-3. (Recommend) Install specified version of pytorch. **If you install a higher version of pytorch, the torchmeta module will not be import correctly. You might resolve the problem by commenting out [line 39 in torchmeta/dataset/utils.py](https://github.com/tristandeleu/pytorch-meta/blob/d55d89ebd47f340180267106bde3e4b723f23762/torchmeta/datasets/utils.py#L39).**
+4. (Recommend) Install specified version of pytorch. **If you install a higher version of pytorch, the torchmeta module will not be import correctly. You might resolve the problem by commenting out [line 39 in torchmeta/dataset/utils.py](https://github.com/tristandeleu/pytorch-meta/blob/d55d89ebd47f340180267106bde3e4b723f23762/torchmeta/datasets/utils.py#L39).**
 ```
 conda install pytorch==1.9.0 torchvision==0.10.0 torchaudio==0.9.0 cudatoolkit=10.2 -c pytorch
 ```
@@ -48,13 +54,13 @@ python gen_fonts.py
 
 ### Training
 
-1. Train the SDF Net
+1. Train the SDF Net.
 
 ```
 python train.py --config utils/sdfvlvl.yaml
 ```
 
-2. Train the CF Net
+2. Train the CF Net.
 
 ```
 python train.py --config utils/cflvlv.yaml
@@ -62,19 +68,19 @@ python train.py --config utils/cflvlv.yaml
 
 ## Inference
 
-1. Generate binary image from SDF Net
+1. Generate binary image from SDF Net.
 
 ```
 python inf_sdf.py --config utils/sdfvlvl.yaml
 ```
 
-2. Generate corners from CF Net
+2. Generate corners from CF Net.
 
 ```
 python inf_cf.py --config utils/cflvlv.yaml
 ```
 
-3. Generate SVGs
+3. Generate SVGs.
    
 ```
 python vectorization.py
