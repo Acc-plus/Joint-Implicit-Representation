@@ -5,11 +5,13 @@
 <img src="/imgs/JIF.png" width="800">
 </p> -->
 
+![image](images/teaser.svg)
+ 
 This is the official implementation of: Joint Implicit Neural Representation for High-fidelity and Compact Vector Fonts.
 
 ## Installation
 
-### Requirements
+### Requireme
 - Python 3.8 or higher
 - PyTorch 1.9.0
 - Torchvision 0.10.0
