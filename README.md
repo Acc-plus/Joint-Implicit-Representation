@@ -62,7 +62,23 @@ python train.py --config utils/cflvlv.yaml
 
 ## Inference
 
+1. Generate binary image from SDF Net
 
+```
+python inf_sdf.py --config utils/sdfvlvl.yaml
+```
+
+2. Generate corners from CF Net
+
+```
+python inf_cf.py --config utils/cflvlv.yaml
+```
+
+3. Generate SVGs
+   
+```
+python vectorization.py
+```
 
 ## Citation
 
