@@ -1,11 +1,6 @@
-from models.DoubleIFGAN import DoubleImplicitField
-from models.CornerField import CornerField
-from models.SignedDistantField import SignedDistanceField
-from models.OccupancyField import OccupancyField
 from models.MSDF import MultiSDF, MultiSDFSimple
 from models.MCF import MultiCF
 from utils.dataloader import *
-from models.icf import *
 import torch
 import torch.nn as nn
 import random

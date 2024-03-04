@@ -1,7 +1,6 @@
 from models.MCF import MultiCF
 from models.MCF_EX import MultiCFEX
 from utils.dataloader import *
-from models.icf import *
 import torch
 import torch.nn as nn
 import random

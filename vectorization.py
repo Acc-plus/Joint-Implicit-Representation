@@ -3,11 +3,9 @@ import torch
 import torch.nn as nn
 import random
 import numpy as np
-import yaml
 from globalconfig import *
 from datetime import *
 import cv2
-import imageio
 from utils.svgvectorizer import Vectorize_Image
 import cairosvg
 from img_collect import ImgCollection
@@ -135,53 +133,7 @@ def vectoriza_demo_all(font1, font2):
     # collector.render_img(os.path.join(path, f'all.png'))
 
 if __name__ == '__main__':
-    # Vectorize_Image('/mnt/data1/cjh/ncf/results/SDF_52_VL/89_964_0.3.png', '/mnt/data1/cjh/ncf/89_964_03.npy', f'reb.svg', 512)
-    for i in range(26):
-        Vectorize_Image(f'rebuttal/{i}.png', f'rebuttal/x{i}.npy', f'{i}.svg', 512)
-    # interpolate_whole()
-    # render_whole()
-    # f_img = f'results/sdf_A/1436_1321_0.0.png'
-    # f_corner = [f'results/corner_sdflowLarge/1436_1321_0.0c.npy']
-    # f_img = f'results/sdf_multi_26_test_lrd995/12.png'
-    # f_corner = [f'results/cf_multi_26_test_lrd995_dv/12c.npy']
-    # for x in range(1425):
-    #     try:
-    #         f_img = f'evaluation/A/{x}.png'
-    #         f_corner = f'evaluation/Ac/{x}.npy'
-    #         Vectorize_Image(f_img, f_corner, f'svg/A/{x}.svg', 512)
-    #     except:
-    #         pass
-    # f_img = f'evaluation/A/{x}.png'
-    # f_corner = f'evaluation/Ac/{x}.npy'
-    
-    # render_group(32)
-    # render_group(0)
-    # render_group(14)
-    # render_group(999)
-    # render_group(95)
-    # vectoriza_demo_all(0, 1076)
-    # render_whole()
-    # x = 15
-    # alpha = 'C'
-    # f_img = f'renders/{alpha}/{x}.png'
-    # f_corner = f'renders/{alpha}c/{x}.npy'
-    # Vectorize_Image(f_img, f_corner, f'{x}.svg', 512)
-    # render_whole()
-    # f_img = f'mid.png'
-    # f_corner = f'mid.npy'
-    # # f_corner = f'results/CF_52_lvlv/999c.npy'
-    # Vectorize_Image(f_img, f_corner, f'mid.svg', 512)
-    # vectoriza_demo('demo/g8')
-    # vectoriza_demo_all('demo/0_201')
-    # vectoriza_demo_all('demo/0_26')
-    # vectoriza_demo_all(0, 341)
-    # vectoriza_demo_all(1076, 999)
-    # vectoriza_demo_all(999, 1117)
-    # vectoriza_demo_all(1117, 1103)
-
-    # f_img = f'demo/0_341/17_3.png'
-    # f_corner = f'results/CF_52_lvlv/0c.npy'
-    # Vectorize_Image(f_img, f_corner, f'output.svg', 512)
+    render_whole()
 
 
 
