@@ -45,7 +45,7 @@ conda install pytorch==1.9.0 torchvision==0.10.0 torchaudio==0.9.0 cudatoolkit=1
 
 ### Data preparation
 
-1. Download VecFont dataset, following the instruction in [DeepVecFont](https://github.com/yizhiwang96/deepvecfont).
+1. Download VecFont dataset, following the instruction in [DeepVecFont](https://gigthub.com/yizhiwang96/deepvecfont).
    
 2. Generate the training data.
 ```

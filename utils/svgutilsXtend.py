@@ -1,13 +1,4 @@
-import cairosvg
-import cv2
 import numpy as np
-import svgwrite
-import svgpathtools
-import pickle
-import time
-import os
-from tqdm import tqdm
-import torch
 import scipy.integrate as integrate
 from utils.svgutils import *
 

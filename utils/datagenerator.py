@@ -24,7 +24,7 @@ def render_png(wrpath, sequence, seqlen, refine = True, coe = 1.2, save_png = Tr
 def sample_on_sdf(img, render_folder, wrpath, prefix, z, seqlen, tlr, tud, stri, strj, num_sample=5000):
     sdfvalue = compute_sdf(img)
     free_rand_idcs = np.random.uniform(0, 1, size=(num_sample, 2))
-    free_rand_idcs_d = (free_rand_idcs*(1024-1)).astype(np.long)
+    free_rand_idcs_d = (free_rand_idcs*(1024-1)).astype(np.int64)
     sdfvalue = sdfvalue[free_rand_idcs_d[:, 0], free_rand_idcs_d[:, 1]]
     
     np.save(os.path.join(render_folder, f'{prefix}{strj}/sdfs', f'{stri}.npy'), np.concatenate([sdfvalue.reshape(num_sample, 1), free_rand_idcs], axis=1))
@@ -33,7 +33,7 @@ def sample_on_sdf(img, render_folder, wrpath, prefix, z, seqlen, tlr, tud, stri,
     np.save(os.path.join(render_folder, f'{prefix}{strj}/samps', f'{stri}sampas.npy'), sampj)
     im = cv2.imread(wrpath, cv2.IMREAD_GRAYSCALE)
     # import pdb; pdb.set_trace()
-    outer = (sampj*1024 + normals*2).astype(np.long)
+    outer = (sampj*1024 + normals*2).astype(np.int64)
     try:
         rev_normals = (im[outer[:,0], outer[:,1]] == 0)
     except:
@@ -103,8 +103,8 @@ def generate_csdflow(img, render_folder, wrpath, prefix, z, seqlen, tlr, tud, st
     cmap = np.load(os.path.join(render_folder, f'{prefix}{strj}/cmaps', f'{stri}cmap.npy'))
     dcmap = np.load(os.path.join(render_folder, f'{prefix}{strj}/dcmaps', f'{stri}dcmap.npy'))
     
-    cmap_d = (cmap*(1024-1)).astype(np.long)
-    dcmap_d = (dcmap*(1024-1)).astype(np.long)
+    cmap_d = (cmap*(1024-1)).astype(np.int64)
+    dcmap_d = (dcmap*(1024-1)).astype(np.int64)
     csdflow = sdfvalue[cmap_d[0, :], cmap_d[1, :]]
     dcsdflow = sdfvalue[dcmap_d[0, :], dcmap_d[1, :]]
 
@@ -112,7 +112,7 @@ def generate_csdflow(img, render_folder, wrpath, prefix, z, seqlen, tlr, tud, st
     np.save(os.path.join(render_folder, f'{prefix}{strj}/dcsdflow', f'{stri}.npy'), dcsdflow)
 
 
-def render_corner_field(render_folder, num_renders, j, prefix='Alphabet', data_PATH = '../test_all.pkl', trainset = None):
+def render_corner_field(render_folder, j, prefix='Alphabet', data_PATH = '../test_all.pkl', trainset = None):
     if trainset is None:
         with open(data_PATH, 'rb') as f:
             trainset = pickle.load(f)

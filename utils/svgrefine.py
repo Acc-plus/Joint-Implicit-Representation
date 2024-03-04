@@ -1,13 +1,5 @@
-import cairosvg
-import cv2
 import numpy as np
-import svgwrite
-import svgpathtools
-import pickle
-import time
-import os
 from tqdm import tqdm
-import torch
 import scipy.integrate as integrate
 
 def reshape_params(lmost, rmost, umost, dmost, coe = 1.2):
