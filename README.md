@@ -72,13 +72,13 @@ python train.py --config utils/cf.yaml
 1. Generate binary image from SDF Net.
 
 ```
-python inf_sdf.py --config utils/sdfvlvl.yaml
+python inf_sdf.py --config utils/sdf.yaml
 ```
 
 2. Generate corners from CF Net.
 
 ```
-python inf_cf.py --config utils/cflvlv.yaml
+python inf_cf.py --config utils/cf.yaml
 ```
 
 3. Generate SVGs.

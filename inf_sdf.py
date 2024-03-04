@@ -174,28 +174,7 @@ def interpo_gly_all(font1, font2):
 
 model.set_glyph_idx(0)
 with torch.no_grad():
-    # inf_sdfs(0, 95)
-    # inf_sdf(156, 512)
-    # inf_sdfs(0, 40)
-    # inf_sdfs(999, 1417)
-    # render_whole()
-    # inf_sdf(254, 512)
-    # inf_sdf(189, 512)
-    # interpo_whole()
-    # inf_mid(0, 39, 512, 0.75, 'mid.png')
-    # interpo_gly(0, 14, 'demo/g2')
-    # interpo_gly(0, 118, 'demo/g4')
-    # interpo_gly(32, 56, 'demo/g5')
-    # inf_sdfs(117, 118)
-    # model.set_glyph_idx(17)
-    # interpo_gly_all(0, 1076)
-    # inf_sdfs(0, 693 )
-    # interpo_gly(0, 25, 'demo/g8')
-    # inf_sdfs(107, 113)
-    # interpo_gly_all(1076, 999)
-    # interpo_gly_all(999, 1117)
-    # interpo_gly_all(1117, 1103)
-    render_simple()
+    render_whole()
 
 
 
