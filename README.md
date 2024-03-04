@@ -59,13 +59,13 @@ python gen_fonts.py
 1. Train the SDF Net.
 
 ```
-python train.py --config utils/sdfvlvl.yaml
+python train.py --config utils/sdf.yaml
 ```
 
 2. Train the CF Net.
 
 ```
-python train.py --config utils/cflvlv.yaml
+python train.py --config utils/cf.yaml
 ```
 
 ## Inference

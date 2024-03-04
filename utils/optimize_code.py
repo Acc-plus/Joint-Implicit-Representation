@@ -39,16 +39,6 @@ if not os.path.exists(os.path.join('results', model_tosave)):
     os.makedirs(os.path.join('results', model_tosave))
 
 glyph_idx = 0
-# fit_idx = 260
-# fit_idx = 203 - D
-# fit idx = 169 - A
-# fit_idx = 2 - C
-# fit_idx = 20
-# fit_idx = 19
-# fit_idx = 1301
-# 748 -> 754
-# fit_idx = 612
-# fit_idx = 710
 fit_idx = 1025
 init_idx = fit_idx
 singleImageLoader = SingleImageSDF(data_paths[glyph_idx], glyph_idx, fit_idx)
