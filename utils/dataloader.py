@@ -217,14 +217,14 @@ class SingleImageSDF(Dataset):
         b_normal = np.zeros((normal.shape[0], ), dtype=np.bool)
         b_normal[:self.nSample_edge] = True
         
-        im_index = np.array([self.style_index], dtype=np.long)
+        im_index = np.array([self.style_index], dtype=np.int64)
         # print(coordinate)
         return {'coords': coordinate, 
         'sdf': sdfvalue, 
         'normal': normal,
         'instance_idx': im_index,
         'b_normal': b_normal,
-        'glyph_idx': np.array([self.glyph_index], dtype=np.long)
+        'glyph_idx': np.array([self.glyph_index], dtype=np.int64)
         }
 
 class SdfLoader(Dataset):
@@ -308,7 +308,7 @@ class SdfLoader(Dataset):
         b_normal = np.zeros((normal.shape[0], ), dtype=np.bool)
         b_normal[:self.nSample_edge] = True
         
-        im_index = np.array([style_index], dtype=np.long)
+        im_index = np.array([style_index], dtype=np.int64)
         # print(coordinate)
         return {'coords': coordinate, 
         'sdf': sdfvalue, 
@@ -384,7 +384,7 @@ class CombinedLoader(BasicLoader):
         b_normal[:self.nSample_edge] = True
         
 
-        im_index = np.array([style_index], dtype=np.long)
+        im_index = np.array([style_index], dtype=np.int64)
 
         cmap = self.cmaps[absolute_index]
         dcmap = self.dcmaps[absolute_index]
@@ -473,7 +473,7 @@ class ConvLoader(BasicLoader):
         b_normal = np.zeros((normal.shape[0], ), dtype=np.bool)
         b_normal[:self.nSample_edge] = True
 
-        im_index = np.array([style_index], dtype=np.long)
+        im_index = np.array([style_index], dtype=np.int64)
 
         return {'coords': coordinate, 
         'sdf': sdfvalue, 
@@ -597,7 +597,7 @@ class OccupancyLoader(Dataset):
         coordinate = np.concatenate([edgesamples, sdfdata[free_rand_idcs, 1:]], axis=0)
 
         
-        im_index = np.array([style_index], dtype=np.long)
+        im_index = np.array([style_index], dtype=np.int64)
         return {'coords': coordinate, 
         'occ': occvalue, 
         'instance_idx': im_index
@@ -632,8 +632,8 @@ class MultiSDFLoader(Dataset):
         for l in self.lengths:
             self.length += l
         
-        self.glyph_idcs = np.zeros((self.length, ), dtype=np.long)
-        self.style_idcs = np.zeros((self.length, ), dtype=np.long)
+        self.glyph_idcs = np.zeros((self.length, ), dtype=np.int64)
+        self.style_idcs = np.zeros((self.length, ), dtype=np.int64)
 
         count_gid = 0
         count_sid = 0
@@ -667,8 +667,8 @@ class MultiCFLoader(Dataset):
         for l in self.lengths:
             self.length += l
         
-        self.glyph_idcs = np.zeros((self.length, ), dtype=np.long)
-        self.style_idcs = np.zeros((self.length, ), dtype=np.long)
+        self.glyph_idcs = np.zeros((self.length, ), dtype=np.int64)
+        self.style_idcs = np.zeros((self.length, ), dtype=np.int64)
 
         count_gid = 0
         count_sid = 0

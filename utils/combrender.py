@@ -435,7 +435,7 @@ def Edge_Partition(fpng, fcorner, resolution):
     return Combine_Rendering(ordered_vertices, corners[np.argsort(nearest)], np.sort(nearest), connection, rev_edges)
 
     # for c in corners_sw:
-    #     ic = (c*1024).astype(np.long)
+    #     ic = (c*1024).astype(np.int64)
     #     cv2.circle(output, ic, 3, 255)
     for (x, y) in bfs_queue:
         output[x, y] = 255

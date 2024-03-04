@@ -299,30 +299,30 @@ def Edge_Partition(fpng, fcorners, resolution):
         # return Combine_Rendering(ordered_vertices, corners, nearest_list, normals, curv, connection, resolution)
         return Combine_Rendering(ordered_vertices, corners[np.argsort(nearest)], np.sort(nearest), normals, curv, connection, resolution)
     else:
-        nearest = np.array([connection[-1]], dtype=np.long)
+        nearest = np.array([connection[-1]], dtype=np.int64)
         return Combine_Rendering(ordered_vertices, np.array([]), nearest, normals, curv, connection, resolution)
     # Estimation of the normal and curvature
     
     
     # for c in corners_sw:
-    #     ic = (c*1024).astype(np.long)
+    #     ic = (c*1024).astype(np.int64)
     #     cv2.circle(output, ic, 3, 255)
     lv = len(ordered_vertices)
     # import pdb; pdb.set_trace()
     # corners = corners[np.argsort(nearest)]
     nearest = np.sort(nearest)
     # q = 7
-    # ov = (ordered_vertices[nearest[q]]*resolution).astype(np.long)
+    # ov = (ordered_vertices[nearest[q]]*resolution).astype(np.int64)
     # cv2.circle(output, [ov[1], ov[0]], 5, 255, 1)
-    # ov = (corners[q]*resolution).astype(np.long)
+    # ov = (corners[q]*resolution).astype(np.int64)
     # cv2.circle(output, [ov[1], ov[0]], 8, 255, 1)
     print(nearest)
     print(connection)
     # import pdb; pdb.set_trace()
     # output[mask] = 255
     for i in range(1400,1430):
-        ov = (ordered_vertices[i]*resolution).astype(np.long)
-        # no = (normals[i]*50).astype(np.long)
+        ov = (ordered_vertices[i]*resolution).astype(np.int64)
+        # no = (normals[i]*50).astype(np.int64)
         # cv2.line(output, ov, ov+no, 255, 1)
         # cv2.circle(output, ov, int(curv[i]*5), 255, 1)
         cv2.circle(output, [ov[1], ov[0]], 2, 255, 1)
@@ -427,7 +427,7 @@ def dual_contouring(nearest, normals, ordered_vertices, connection, corners, res
     pdis /= pdis.sum()
     pdis = np.expand_dims(pdis,1).repeat(2,1)
     connection_i = 0
-    id_seq = np.zeros((n_len, ), dtype=np.long)
+    id_seq = np.zeros((n_len, ), dtype=np.int64)
     new_corners = np.zeros_like(corners)
     for i in range(len(nearest)):
         n_id = nearest[i]

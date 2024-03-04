@@ -58,7 +58,7 @@ data:
   num_instance: 1500
 
 training:
-  gpus: [2]
+  gpus: [0]
   batch_size: 64
   epochs: 200
   LR: 0.0001

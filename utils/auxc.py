@@ -65,7 +65,7 @@ def sample_corner_from_area(render_folder, num_renders):
 
     for i in tqdm(range(num_renders)):
         
-        contains_Cp = np.array(contains, dtype=np.long)
+        contains_Cp = np.array(contains, dtype=np.int64)
         for j in range(num_areas):
             contains_Cp[j] -= np.random.randint(0, 2) * 2
         corners = []

@@ -33,7 +33,8 @@ python setup.py install
 
 3. Install [torchmeta](https://github.com/tristandeleu/pytorch-meta).
 ```
-pip install git+https://github.com/tristandeleu/pytorch-meta
+cd torch meta
+python setup.py install
 ```
 
 4. (Recommend) Install specified version of pytorch. **If you install a higher version of pytorch, the torchmeta module will not be import correctly. You might resolve the problem by commenting out [line 39 in torchmeta/dataset/utils.py](https://github.com/tristandeleu/pytorch-meta/blob/d55d89ebd47f340180267106bde3e4b723f23762/torchmeta/datasets/utils.py#L39).**

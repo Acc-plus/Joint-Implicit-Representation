@@ -144,7 +144,7 @@ def render_simple():
 
 def interpo_whole():
     import numpy as np
-    sel_id = np.array(list(range(1425)), dtype=np.long)
+    sel_id = np.array(list(range(1425)), dtype=np.int64)
     np.random.seed(14)
     np.random.shuffle(sel_id)
     for idx in range(52):
