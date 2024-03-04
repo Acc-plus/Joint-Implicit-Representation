@@ -69,8 +69,8 @@ training:
 log_info:
   dir_output: results
   ckpt_load: 
-  ckpt_save: CF_52_lvlv
-  pretrained: CF_52_lvlv
+  ckpt_save: CF_52
+  pretrained: CF_52
   epoch: 
   gif_save: ''
   png_save: ''

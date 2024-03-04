@@ -17,13 +17,14 @@ data_paths = configs['data']['paths']
 gif_save = configs['log_info']['gif_save']
 png_save = configs['log_info']['png_save']
 epoch = configs['log_info']['epoch']
+model_type = eval(configs['model']['type'])
 
 ep = ''
 if (epoch is not None):
     ep = f' ep{epoch}'
 
 # model = MultiSDF(num_instance, len(data_paths), **configs['model']['SignedDistanceField'])
-model = MultiSDFSimple(num_instance, len(data_paths), **configs['model']['SignedDistanceField'])
+model = model_type(num_instance, len(data_paths), **configs['model']['params'])
 assert model_toload is not None
 model.load_state_dict(torch.load(f'results/{model_toload}/model{ep}.pth'))
 

@@ -20,7 +20,6 @@ def setup_seed(seed):
 def main():
     setup_seed(configs['seed'])
     model_toload = configs['log_info']['ckpt_load']
-    gif_tosave = configs['log_info']['ckpt_load']
     model_tosave = configs['log_info']['ckpt_save']
     num_instance = configs['data']['num_instance']
     data_paths = configs['data']['paths']

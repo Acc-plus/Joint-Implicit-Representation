@@ -69,8 +69,8 @@ training:
 log_info:
   dir_output: results
   ckpt_load: 
-  ckpt_save: SDF_52_VL
-  pretrained: SDF_52_VL
+  ckpt_save: SDF_52
+  pretrained: SDF_52
   epoch: 
   gif_save: ''
   png_save: ''

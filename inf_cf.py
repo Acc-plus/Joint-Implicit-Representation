@@ -22,7 +22,7 @@ ep = ''
 if (epoch is not None):
     ep = f' ep{epoch}'
 
-model = model_type(num_instance, len(data_paths), **configs['model']['CornerField'])
+model = model_type(num_instance, len(data_paths), **configs['model']['params'])
 assert model_toload is not None
 model.load_state_dict(torch.load(f'results/{model_toload}/model{ep}.pth'))
 
