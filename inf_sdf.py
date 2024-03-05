@@ -26,7 +26,7 @@ if (epoch is not None):
 # model = MultiSDF(num_instance, len(data_paths), **configs['model']['SignedDistanceField'])
 model = model_type(num_instance, len(data_paths), **configs['model']['params'])
 assert model_toload is not None
-model.load_state_dict(torch.load(f'results/{model_toload}/model{ep}.pth'))
+model.load_state_dict(torch.load(f'results/{model_toload}/model{ep}.pth', map_location=device))
 
 model = model.to(device)
 
