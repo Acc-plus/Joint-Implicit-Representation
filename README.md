@@ -11,7 +11,7 @@ This is the official implementation of: Joint Implicit Neural Representation for
 
 ## Installation
 
-### Requireme
+### Requirement
 - Python 3.8 or higher
 - PyTorch 1.9.0
 - Torchvision 0.10.0
@@ -46,7 +46,7 @@ conda install pytorch==1.9.0 torchvision==0.10.0 torchaudio==0.9.0 cudatoolkit=1
 
 ### Data preparation
 
-1. Download VecFont dataset, following the instruction in [DeepVecFont](https://gigthub.com/yizhiwang96/deepvecfont).
+1. Download VecFont dataset, following the instruction in [DeepVecFont](https://gigthub.com/yizhiwang96/deepvecfont) and place the test_all.pkl in ./dataset/ folder.
    
 2. Generate the training data.
 ```
@@ -68,7 +68,11 @@ python train.py --config utils/sdf.yaml
 python train.py --config utils/cf.yaml
 ```
 
+
+
 ## Inference
+
+You can download pretrained model from [Google Drive](https://drive.google.com/drive/folders/12BFZC5S1ri3S2PtzdAmonGuWDHoj-Njj?usp=sharing).
 
 1. Generate binary image from SDF Net.
 
